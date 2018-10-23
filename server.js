@@ -57,10 +57,6 @@ var getLink = require('./Interface/link/get_linkmsg.js')
 //引入链接修改方法
 var postLink = require('./Interface/link/post_linkmsg.js')
 
-/*--------------------------------------引入链接方法--------------------------------------------*/
-
-
-
 /*--------------------------------------引入express框架--------------------------------------------*/
 
 var express = require('express')

@@ -57,6 +57,7 @@ var getLink = require('./Interface/link/get_linkmsg.js')
 //引入链接修改方法
 var postLink = require('./Interface/link/post_linkmsg.js')
 
+<<<<<<< HEAD
 /*--------------------------------------引入视频方法--------------------------------------------*/
 
 //引入视频信息方法
@@ -65,6 +66,8 @@ var getVideo = require('./Interface/video/get_videomsg.js')
 //引入视频修改信息方法
 var postVideo = require('./Interface/video/post_videomsg.js')
 
+=======
+>>>>>>> 8046cf9bb58ba678f9fefc62ee90319ab68676d1
 /*--------------------------------------引入express框架--------------------------------------------*/
 
 var express = require('express')

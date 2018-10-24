@@ -8,13 +8,13 @@ var multipart = require('connect-multiparty')
 //引入文件解析模块
 var multer = require('multer')
 
-//配置中间件
-var Ram = multer.diskStorage({
+//配置图片中间件
+var RamImage = multer.diskStorage({
 
 	destination:function(req,file,callback){
 
 		//第二个参数设置路径，下面的路径为server.js所在目录的相对路径
-        callback(null,__dirname+'/../source/images')
+        callback(null,__dirname+'/../../source/images')
         
     },
     
@@ -27,7 +27,30 @@ var Ram = multer.diskStorage({
     
 })
 
-upload = multer({storage:Ram})
+//配置照片中间件
+var RamVideo = multer.diskStorage({
+
+	destination:function(req,file,callback){
+
+		//第二个参数设置路径，下面的路径为server.js所在目录的相对路径
+        callback(null,__dirname+'/../../source/videos')
+        
+    },
+    
+	filename:function(req,file,callback){
+
+		//第二个参数设置文件名，下面的文件名为上传时的文件名
+        callback(null,file.originalname)
+        
+    }
+    
+})
+
+//配置照片对象
+uploadImage = multer({storage:RamImage})
+
+//配置视频对象
+uploadVideo = multer({storage:RamVideo})
 
 //获取中间件数据
 function getData(req,res,next) {
@@ -97,7 +120,9 @@ module.exports = {
 
     multipartMiddleware:multipartMiddleware,
 
-    upload:upload,
+    uploadImage:uploadImage,
+
+    uploadVideo:uploadVideo,
 
     getDataNewVersion:getDataNewVersion
 

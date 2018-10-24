@@ -10,7 +10,7 @@ var url = require('url')
 //获取缩略图分页总数
 function getPageCount(req,res) {
 
-    thumb.find({},function(err,data) {
+    thumb.find({show:true},function(err,data) {
 
         if(data.length != 0) {
 

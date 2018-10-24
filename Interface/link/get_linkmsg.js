@@ -1,5 +1,5 @@
 
-//引入站点配置数据库操作对象
+//引入链接数据库操作对象
 var link =require('../../data_base/link/data_base.js')
 
 //引入url,用于分析传入url后的参数
@@ -10,7 +10,7 @@ var url = require('url')
 //获取链接总页数
 function getLinkCount(req,res) {
 
-    link.find({},function(err,data) {
+    link.find({show:true},function(err,data) {
 
         if(data.length != 0) {
 
@@ -18,7 +18,7 @@ function getLinkCount(req,res) {
 
                 status:"ok",
     
-                msg:"获取页面总页数",
+                msg:"获取链接总页数",
     
                 count:Math.ceil(data.length/10)
     
@@ -40,7 +40,7 @@ function getLinkCount(req,res) {
 
 }
 
-//获取页面列表
+//获取链接列表
 function getLinkList(req,res) {
 
     try {

@@ -57,9 +57,13 @@ var getLink = require('./Interface/link/get_linkmsg.js')
 //引入链接修改方法
 var postLink = require('./Interface/link/post_linkmsg.js')
 
-/*--------------------------------------引入链接方法--------------------------------------------*/
+/*--------------------------------------引入视频方法--------------------------------------------*/
 
+//引入视频信息方法
+var getVideo = require('./Interface/video/get_videomsg.js')
 
+//引入视频修改信息方法
+var postVideo = require('./Interface/video/post_videomsg.js')
 
 /*--------------------------------------引入express框架--------------------------------------------*/
 
@@ -97,7 +101,7 @@ app.post('/api/announcement/delete',middleWare.getData,postInfo.deleteInfo)
 //获取随机一句诗歌
 app.get('/poem/get',tool.getPoetry)
 
-//获取随机一句话
+//获取随机一句话 
 app.get('/speech/get',tool.getSpeech)
 
 //获取随机图片url
@@ -123,7 +127,7 @@ app.get('/api/thumb/count',getThumb.getPageCount)
 app.get('/api/thumb/list',getThumb.getThumbList)
 
 //添加缩略图
-app.post('/api/thumb/add',middleWare.upload.single('image'),postThumb.addThumb)
+app.post('/api/thumb/add',middleWare.uploadImage.single('image'),postThumb.addThumb)
 
 //修改缩略图数据
 app.post('/api/thumb/update',middleWare.getData,postThumb.updateThumb)
@@ -159,10 +163,6 @@ app.post('/api/page/update',middleWare.getData,postPage.updatePage)
 //删除页面
 app.post('/api/page/delete',middleWare.getData,postPage.deletePage)
 
-/*--------------------------------------菜单接口--------------------------------------------*/
-
-
-
 /*--------------------------------------链接接口--------------------------------------------*/
 
 //获取链接总页数
@@ -179,6 +179,44 @@ app.post('/api/link/update',middleWare.getDataNewVersion,postLink.updateLink)
 
 //删除链接
 app.post('/api/link/delete',middleWare.getDataNewVersion,postLink.deleteLink)
+
+/*--------------------------------------视频接口--------------------------------------------*/
+
+//获取视频总页数
+app.get('/api/video/count',getVideo.getVideoCount)
+
+//获取视频列表
+app.get('/api/video/list',getVideo.getVideoList)
+
+//获取视频详情
+app.get('/api/video/get',getVideo.getVideoMsg)
+
+//获取视频分类总页数
+app.get('/api/video/category/count',getVideo.getVideoTypeCount)
+
+//获取视频分类列表
+app.get('/api/video/category/list',getVideo.getVideoTypeList)
+
+//获取视频分类详情
+app.get('/api/video/category/get',getVideo.getVideoTypeMsg)
+
+//添加视频
+app.post('/api/video/add',middleWare.uploadVideo.single('video'),postVideo.addVideo)
+
+//修改视频信息
+app.post('/api/video/update',middleWare.getDataNewVersion,postVideo.updateVideo)
+
+//删除视频
+app.post('/api/video/delete',middleWare.getDataNewVersion,postVideo.deleteVideo)
+
+//添加视频分类
+app.post('/api/video/category/add',middleWare.getDataNewVersion,postVideo.addVideoType)
+
+//修改视频分类
+app.post('/api/video/category/update',middleWare.getDataNewVersion,postVideo.updateVideoType)
+
+//删除视频分类
+app.post('/api/video/category/delete',middleWare.getDataNewVersion,postVideo.deleteVideoType)
 
 
 app.listen(8888)

@@ -209,7 +209,7 @@ function addThumb(req,res) {
 
         description:req.body.description,
 
-        upload:"source/images/"+req.file.filename
+        upload:"/source/images/"+req.file.filename
 
     }
 

@@ -4,17 +4,69 @@
     <meta charset="utf-8" />
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="./source/js/jquery-3.3.1.development.js"></script>
 </head>
 <body>
     <div>
-        <form action="/api/link/delete" method="post">
-            <label for="id">链接id:</label><input type="text" name="id" id="name"><br>
-            <!-- <label for="name">链接名称:</label><input type="text" name="name" id="name"><br>
-            <label for="description">链接描述:</label><input type="text" name="description" id="description"><br>
-            <label for="link">链接地址:</label><input type="text" name="link" id="link"><br>
-            <label for="thumb_id">链接缩略图id:</label><input type="number" name="thumb_id" id="thumb_id"><br> -->
-            <input type="submit" value="提交">
+        <form action="/api/video/category/delete" method="post">
+            <label for="id">视频id:</label><input type="text" name="id" id="id"><br>
+            <!-- <label for="name">视频分类名称:</label><input type="text" name="name" id="name"><br> -->
+            <!-- <label for="title">视频标题:</label><input type="text" name="title" id="title"><br> -->
+            <!-- <label for="description">视频描述:</label><input type="text" name="description" id="description"><br> -->
+            <!-- <label for="category_id">视频分类id:</label><input type="text" name="category_id" id="category_id"><br> -->
+            <!-- <label for="thumb_id">缩略图id:</label><input type="number" name="thumb_id" id="thumb_id"><br> -->
+            <button>提交</button>
         </form>
+        <!-- <div class="button">
+            点击上传
+        </div> -->
     </div>
 </body>
+<script>
+
+    // $('.button').click(function() {
+
+    //     var formData = new FormData()
+
+    //     formData.append('name',document.querySelector('#name').value)
+
+    //     formData.append('title',document.querySelector('#title').value)
+
+    //     formData.append('description',document.querySelector('#description').value)
+
+    //     formData.append('type',document.querySelector('#type').value)
+
+    //     formData.append('category_id',document.querySelector('#category_id').value)
+
+    //     formData.append('thumb_id',document.querySelector('#thumb_id').value)
+
+    //     formData.append('video',document.querySelector('#video').files[0])
+
+    //     $.ajax({
+
+    //         url:"http://localhost:8888/api/video/add",
+
+    //         type:"POST",
+
+    //         data:formData,
+
+    //         contentType:false,
+
+    //         processData:false,
+
+    //         success(data) {
+
+    
+
+    //         },error() {
+
+    //             console.log("请求失败")
+
+    //         }
+
+    //     })
+
+    // })
+
+</script>
 </html>

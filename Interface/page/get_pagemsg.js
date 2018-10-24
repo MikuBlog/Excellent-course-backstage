@@ -10,7 +10,7 @@ var url = require('url')
 //获取页面总页数
 function getPageCount(req,res) {
 
-    page.find({},function(err,data) {
+    page.find({show:true},function(err,data) {
 
         if(data.length != 0) {
 

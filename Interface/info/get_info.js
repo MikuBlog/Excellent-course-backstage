@@ -86,7 +86,23 @@ function getInfoList(req,res) {
 function getInfoMes(req,res) {
 
     //获取id值
-    var pageNumber = parseInt(url.parse(req.url).query.split("=")[1])
+    try {
+
+        var pageNumber = parseInt(url.parse(req.url).query.split("=")[1])
+
+    }catch(e) {
+
+        res.send({
+
+            status:"error",
+
+            msg:"请填写正确的url"
+
+        })
+
+        return
+
+    }
 
     InfoList.findOne({id:pageNumber,show:true},function(err,data) {
 

@@ -8,13 +8,15 @@
 </head>
 <body>
     <div>
-        <form action="/api/video/category/delete" method="post">
-            <label for="id">视频id:</label><input type="text" name="id" id="id"><br>
-            <!-- <label for="name">视频分类名称:</label><input type="text" name="name" id="name"><br> -->
-            <!-- <label for="title">视频标题:</label><input type="text" name="title" id="title"><br> -->
-            <!-- <label for="description">视频描述:</label><input type="text" name="description" id="description"><br> -->
-            <!-- <label for="category_id">视频分类id:</label><input type="text" name="category_id" id="category_id"><br> -->
-            <!-- <label for="thumb_id">缩略图id:</label><input type="number" name="thumb_id" id="thumb_id"><br> -->
+        <form action="/api/post/author/delete" method="post">
+            <label for="id">文件id:</label><input type="text" name="id" id="id"><br>
+            <label for="name">作者名称:</label><input type="text" name="name" id="name"><br>
+            <!-- <label for="title">文件标题:</label><input type="text" name="title" id="title"><br> -->
+            <!-- <label for="description">文件描述:</label><input type="text" name="description" id="description"><br> -->
+            <!-- <label for="type">文件类别:</label><input type="text" name="type" id="type"><br> -->
+            <!-- <label for="category_id">文件分类id:</label><input type="text" name="category_id" id="category_id"><br> -->
+            <!-- <label for="thumb_id">缩略图id:</label><input type="number" name="thumb_id" id="thumb_id"><br>
+            <label for="image">文件:</label><input type="file" name="image" id="image"><br> -->
             <button>提交</button>
         </form>
         <!-- <div class="button">
@@ -34,17 +36,17 @@
 
     //     formData.append('description',document.querySelector('#description').value)
 
-    //     formData.append('type',document.querySelector('#type').value)
+    //     // formData.append('type',document.querySelector('#type').value)
 
     //     formData.append('category_id',document.querySelector('#category_id').value)
 
     //     formData.append('thumb_id',document.querySelector('#thumb_id').value)
 
-    //     formData.append('video',document.querySelector('#video').files[0])
+    //     formData.append('image',document.querySelector('#image').files[0])
 
     //     $.ajax({
 
-    //         url:"http://localhost:8888/api/video/add",
+    //         url:"http://localhost:8888/api/image/add",
 
     //         type:"POST",
 
@@ -56,7 +58,7 @@
 
     //         success(data) {
 
-    
+    //             console.log(data)
 
     //         },error() {
 

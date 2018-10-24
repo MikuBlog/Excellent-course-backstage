@@ -57,7 +57,6 @@ var getLink = require('./Interface/link/get_linkmsg.js')
 //引入链接修改方法
 var postLink = require('./Interface/link/post_linkmsg.js')
 
-<<<<<<< HEAD
 /*--------------------------------------引入视频方法--------------------------------------------*/
 
 //引入视频信息方法
@@ -66,8 +65,36 @@ var getVideo = require('./Interface/video/get_videomsg.js')
 //引入视频修改信息方法
 var postVideo = require('./Interface/video/post_videomsg.js')
 
-=======
->>>>>>> 8046cf9bb58ba678f9fefc62ee90319ab68676d1
+/*--------------------------------------引入文件方法--------------------------------------------*/
+
+//引入文件信息方法
+var getFold = require('./Interface/fold/get_foldmsg.js')
+
+//引入文件信息修改方法
+var postFold = require('./Interface/fold/post_foldmsg.js')
+
+/*--------------------------------------引入图片方法--------------------------------------------*/
+
+//引入图片信息方法
+var getGallery  = require('./Interface/gallery/get_gallerymsg.js')
+
+//引入图片信息修改方法
+var postGallery = require('./Interface/gallery/post_gallerymsg.js')
+
+/*--------------------------------------引入文章方法--------------------------------------------*/
+
+//引入作者信息方法
+var getAuthor = require('./Interface/article/get_authormsg.js')
+
+//引入作者信息修改方法
+var postAuthor = require('./Interface/article/post_authormsg.js')
+
+//引入文章信息方法
+var getArticle = require('./Interface/article/get_articlemsg.js')
+
+//引入文章信息修改方法
+var postArticle = require('./Interface/article/post_articlemsg.js')
+
 /*--------------------------------------引入express框架--------------------------------------------*/
 
 var express = require('express')
@@ -221,5 +248,100 @@ app.post('/api/video/category/update',middleWare.getDataNewVersion,postVideo.upd
 //删除视频分类
 app.post('/api/video/category/delete',middleWare.getDataNewVersion,postVideo.deleteVideoType)
 
+/*--------------------------------------文件接口--------------------------------------------*/
+
+//获取文件总页数
+app.get('/api/file/count',getFold.getFoldCount)
+
+//获取文件列表
+app.get('/api/file/list',getFold.getFoldList)
+
+//获取文件详情
+app.get('/api/file/get',getFold.getFoldMsg)
+
+//获取文件分类总页数
+app.get('/api/file/category/count',getFold.getFoldTypeCount)
+
+//获取文件分类列表
+app.get('/api/file/category/list',getFold.getFoldTypeList)
+
+//获取文件分类详情
+app.get('/api/file/category/get',getFold.getFoldTypeMsg)
+
+//添加文件
+app.post('/api/file/add',middleWare.uploadFile.single('file'),postFold.addFold)
+
+//修改文件信息
+app.post('/api/file/update',middleWare.getDataNewVersion,postFold.updateFold)
+
+//删除文件
+app.post('/api/file/delete',middleWare.getDataNewVersion,postFold.deleteFold)
+
+//添加文件分类
+app.post('/api/file/category/add',middleWare.getDataNewVersion,postFold.addFoldType)
+
+//修改文件分类
+app.post('/api/file/category/update',middleWare.getDataNewVersion,postFold.updateFoldType)
+
+//删除文件分类
+app.post('/api/file/category/delete',middleWare.getDataNewVersion,postFold.deleteFoldType)
+
+/*--------------------------------------图片接口--------------------------------------------*/
+
+//获取图片总页数
+app.get('/api/image/count',getGallery.getGalleryCount)
+
+//获取图片列表
+app.get('/api/image/list',getGallery.getGalleryList)
+
+//获取图片详情
+app.get('/api/image/get',getGallery.getGalleryMsg)
+
+//获取图片分类总页数
+app.get('/api/image/category/count',getGallery.getGalleryTypeCount)
+
+//获取图片分类列表
+app.get('/api/image/category/list',getGallery.getGalleryTypeList)
+
+//获取图片分类详情
+app.get('/api/image/category/get',getGallery.getGalleryTypeMsg)
+
+//添加图片
+app.post('/api/image/add',middleWare.uploadImage.single('image'),postGallery.addGallery)
+
+//修改图片信息
+app.post('/api/image/update',middleWare.getDataNewVersion,postGallery.updateGallery)
+
+//删除图片
+app.post('/api/image/delete',middleWare.getDataNewVersion,postGallery.deleteGallery)
+
+//添加图片分类
+app.post('/api/image/category/add',middleWare.getDataNewVersion,postGallery.addGalleryType)
+
+//修改图片分类
+app.post('/api/image/category/update',middleWare.getDataNewVersion,postGallery.updateGalleryType)
+
+//删除图片分类
+app.post('/api/image/category/delete',middleWare.getDataNewVersion,postGallery.deleteGalleryType)
+
+/*--------------------------------------文章接口--------------------------------------------*/
+
+//获取作者总页数
+app.get('/api/post/author/count',getAuthor.getAuthorCount)
+
+//获取作者列表
+app.get('/api/post/author/list',getAuthor.getAuthorList)
+
+//获取作者详情
+app.get('/api/post/author/get',getAuthor.getAuthorMsg)
+
+//添加作者
+app.post('/api/post/author/add',middleWare.getDataNewVersion,postAuthor.addAuthor)
+
+//修改作者信息
+app.post('/api/post/author/update',middleWare.getDataNewVersion,postAuthor.updateAuthor)
+
+//删除作者
+app.post('/api/post/author/delete',middleWare.getDataNewVersion,postAuthor.deleteAuthor)
 
 app.listen(8888)

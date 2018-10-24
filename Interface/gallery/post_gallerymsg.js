@@ -1,13 +1,13 @@
 
-//引入视频数据库操作对象
-var video =require('../../data_base/video/data_base_video.js')
+//引入图片数据库操作对象
+var gallery =require('../../data_base/gallery/data_base_gallery.js')
 
-//引入视频分类数据库操作对象
-var videotype =require('../../data_base/video/data_base_videotype.js')
+//引入图片分类数据库操作对象
+var gallerytype =require('../../data_base/gallery/data_base_gallerytype.js')
 
 /*--------------------------------------数据处理函数--------------------------------------------*/
 
-//处理添加视频数据
+//处理添加图片数据
 function insertData(obj,filename,req,res) {
 
     if(obj.name == "" || obj.category_id == "" || obj.thumb_id == "" || filename == "" || obj.title == "") {
@@ -24,19 +24,19 @@ function insertData(obj,filename,req,res) {
 
     }
 
-    video.find({},function(err,data) {
+    gallery.find({},function(err,data) {
 
         if(data.length != 0) {
 
-            video.find({}).skip(data.length - 1).exec(function(err,data) {
+            gallery.find({}).skip(data.length - 1).exec(function(err,data) {
 
                 obj["id"] = data[0].id + 1
 
-                obj["upload"] = "/source/videos/"+filename
+                obj["upload"] = "/source/images/"+filename
 
                 obj["show"] = true
 
-                video.create(obj,function(err) {
+                gallery.create(obj,function(err) {
 
                     if(err) {
             
@@ -44,7 +44,7 @@ function insertData(obj,filename,req,res) {
 
                             status:"error",
                             
-                            msg:"视频添加失败!"
+                            msg:"图片添加失败!"
 
                         })
             
@@ -54,7 +54,7 @@ function insertData(obj,filename,req,res) {
                             
                             status:"ok",
                             
-                            msg:"视频添加成功!"
+                            msg:"图片添加成功!"
                         
                         })
             
@@ -68,11 +68,11 @@ function insertData(obj,filename,req,res) {
 
             obj["id"] = 1
 
-            obj["upload"] = "/source/videos/"+filename
+            obj["upload"] = "/source/images/"+filename
 
             obj["show"] = true
 
-            video.create(obj,function(err) {
+            gallery.create(obj,function(err) {
 
                 if(err) {
         
@@ -80,7 +80,7 @@ function insertData(obj,filename,req,res) {
 
                         status:"error",
                         
-                        msg:"视频添加失败!"
+                        msg:"图片添加失败!"
 
                     })
         
@@ -90,7 +90,7 @@ function insertData(obj,filename,req,res) {
                         
                         status:"ok",
                         
-                        msg:"视频添加成功!"
+                        msg:"图片添加成功!"
                     
                     })
         
@@ -104,7 +104,7 @@ function insertData(obj,filename,req,res) {
 
 }
 
-//处理添加视频分类数据
+//处理添加图片分类数据
 function insertTypeData(obj,req,res) {
 
     if(obj.name == "" || obj.thumb_id == "") {
@@ -121,17 +121,17 @@ function insertTypeData(obj,req,res) {
 
     }
 
-    videotype.find({},function(err,data) {
+    gallerytype.find({},function(err,data) {
 
         if(data.length != 0) {
 
-            videotype.find({}).skip(data.length - 1).exec(function(err,data) {
+            gallerytype.find({}).skip(data.length - 1).exec(function(err,data) {
 
                 obj["id"] = data[0].id + 1
 
                 obj["show"] = true
 
-                videotype.create(obj,function(err) {
+                gallerytype.create(obj,function(err) {
 
                     if(err) {
             
@@ -139,7 +139,7 @@ function insertTypeData(obj,req,res) {
 
                             status:"error",
                             
-                            msg:"视频分类添加失败!"
+                            msg:"图片分类添加失败!"
 
                         })
             
@@ -149,7 +149,7 @@ function insertTypeData(obj,req,res) {
                             
                             status:"ok",
                             
-                            msg:"视频分类添加成功!"
+                            msg:"图片分类添加成功!"
                         
                         })
             
@@ -165,7 +165,7 @@ function insertTypeData(obj,req,res) {
 
             obj["show"] = true
 
-            videotype.create(obj,function(err) {
+            gallerytype.create(obj,function(err) {
 
                 if(err) {
         
@@ -173,7 +173,7 @@ function insertTypeData(obj,req,res) {
 
                         status:"error",
                         
-                        msg:"视频分类添加失败!"
+                        msg:"图片分类添加失败!"
 
                     })
         
@@ -183,7 +183,7 @@ function insertTypeData(obj,req,res) {
                         
                         status:"ok",
                         
-                        msg:"视频分类添加成功!"
+                        msg:"图片分类添加成功!"
                     
                     })
         
@@ -197,7 +197,7 @@ function insertTypeData(obj,req,res) {
 
 }
 
-//处理视频修改数据
+//处理图片修改数据
 function updateData(obj,req,res) {
 
     if(obj.id == "") {
@@ -214,7 +214,7 @@ function updateData(obj,req,res) {
 
     }
 
-    video.updateOne({id:obj.id},{$set:{name:obj.name,description:obj.description,title:obj.title,category_id:obj.category_id,thumb_id:obj.thumb_id}},function(err) {
+    gallery.updateOne({id:obj.id},{$set:{name:obj.name,description:obj.description,title:obj.title,category_id:obj.category_id,thumb_id:obj.thumb_id}},function(err) {
 
         if(err) {
 
@@ -242,7 +242,7 @@ function updateData(obj,req,res) {
 
 }
 
-//处理视频分类修改数据
+//处理图片分类修改数据
 function updateTypeData(obj,req,res) {
 
     if(obj.id == "") {
@@ -259,7 +259,7 @@ function updateTypeData(obj,req,res) {
 
     }
 
-    videotype.updateOne({id:obj.id},{$set:{name:obj.name,description:obj.description,thumb_id:obj.thumb_id}},function(err) {
+    gallerytype.updateOne({id:obj.id},{$set:{name:obj.name,description:obj.description,thumb_id:obj.thumb_id}},function(err) {
 
         if(err) {
 
@@ -287,10 +287,10 @@ function updateTypeData(obj,req,res) {
 
 }
 
-//处理删除视频修改数据
+//处理删除图片修改数据
 function deleteData(obj,req,res) {
 
-    video.updateOne({id:obj.id},{$set:{show:false}},function(err) {
+    gallery.updateOne({id:obj.id},{$set:{show:false}},function(err) {
 
         if(err) {
 
@@ -318,10 +318,10 @@ function deleteData(obj,req,res) {
 
 }
 
-//处理删除视频分类数据
+//处理删除图片分类数据
 function deleteTypeData(obj,req,res) {
 
-    videotype.updateOne({id:obj.id},{$set:{show:false}},function(err) {
+    gallerytype.updateOne({id:obj.id},{$set:{show:false}},function(err) {
 
         if(err) {
 
@@ -352,43 +352,43 @@ function deleteTypeData(obj,req,res) {
 
 /*--------------------------------------入口函数--------------------------------------------*/
 
-//添加视频
-function addVideo(req,res) {
+//添加图片
+function addGallery(req,res) {
 
     insertData(req.body,req.file.filename,req,res)
 
 }
 
-//修改视频
-function updateVideo(req,res) {
+//修改图片
+function updateGallery(req,res) {
 
     updateData(req.body,req,res)
 
 }
 
-//删除视频
-function deleteVideo(req,res) {
+//删除图片
+function deleteGallery(req,res) {
 
     deleteData(req.body,req,res)
 
 }
 
-//添加视频分类
-function addVideoType(req,res) {
+//添加图片分类
+function addGalleryType(req,res) {
 
     insertTypeData(req.body,req,res)
 
 }
 
-//修改视频分类
-function updateVideoType(req,res) {
+//修改图片分类
+function updateGalleryType(req,res) {
 
     updateTypeData(req.body,req,res)
 
 }
 
-//删除视频分类
-function deleteVideoType(req,res) {
+//删除图片分类
+function deleteGalleryType(req,res) {
 
     deleteTypeData(req.body,req,res)
 
@@ -397,16 +397,16 @@ function deleteVideoType(req,res) {
 
 module.exports = {
 
-    addVideo:addVideo,
+    addGallery:addGallery,
 
-    updateVideo:updateVideo,
+    updateGallery:updateGallery,
 
-    deleteVideo:deleteVideo,
+    deleteGallery:deleteGallery,
 
-    addVideoType:addVideoType,
+    addGalleryType:addGalleryType,
 
-    updateVideoType:updateVideoType,
+    updateGalleryType:updateGalleryType,
 
-    deleteVideoType:deleteVideoType
+    deleteGalleryType:deleteGalleryType
 
 }

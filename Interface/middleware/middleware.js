@@ -46,11 +46,33 @@ var RamVideo = multer.diskStorage({
     
 })
 
+//配置文件中间件
+var RamFile = multer.diskStorage({
+
+	destination:function(req,file,callback){
+
+		//第二个参数设置路径，下面的路径为server.js所在目录的相对路径
+        callback(null,__dirname+'/../../source/files')
+        
+    },
+    
+	filename:function(req,file,callback){
+
+		//第二个参数设置文件名，下面的文件名为上传时的文件名
+        callback(null,file.originalname)
+        
+    }
+    
+})
+
 //配置照片对象
 uploadImage = multer({storage:RamImage})
 
 //配置视频对象
 uploadVideo = multer({storage:RamVideo})
+
+//配置文件对象
+uploadFile = multer({storage:RamFile})
 
 //获取中间件数据
 function getData(req,res,next) {
@@ -123,6 +145,8 @@ module.exports = {
     uploadImage:uploadImage,
 
     uploadVideo:uploadVideo,
+
+    uploadFile:uploadFile,
 
     getDataNewVersion:getDataNewVersion
 

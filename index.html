@@ -8,15 +8,17 @@
 </head>
 <body>
     <div>
-        <form action="/api/post/author/delete" method="post">
-            <label for="id">文件id:</label><input type="text" name="id" id="id"><br>
-            <label for="name">作者名称:</label><input type="text" name="name" id="name"><br>
-            <!-- <label for="title">文件标题:</label><input type="text" name="title" id="title"><br> -->
-            <!-- <label for="description">文件描述:</label><input type="text" name="description" id="description"><br> -->
-            <!-- <label for="type">文件类别:</label><input type="text" name="type" id="type"><br> -->
-            <!-- <label for="category_id">文件分类id:</label><input type="text" name="category_id" id="category_id"><br> -->
-            <!-- <label for="thumb_id">缩略图id:</label><input type="number" name="thumb_id" id="thumb_id"><br>
-            <label for="image">文件:</label><input type="file" name="image" id="image"><br> -->
+        <form action="/api/post/category/delete" method="post">
+            <label for="id">文章id:</label><input type="text" name="id" id="id"><br>
+            <label for="name">文章分类名称:</label><input type="text" name="name" id="name"><br>
+            <!-- <label for="post_title">文章标题:</label><input type="text" name="post_title" id="post_title"><br> -->
+            <label for="description">文章分类描述:</label><input type="text" name="description" id="description"><br>
+            <!-- <label for="post_content">文章内容:</label><input type="text" name="post_content" id="post_content"><br>
+            <label for="type">文件类别:</label><input type="text" name="type" id="type"><br>
+            <label for="post_category">文章分类id:</label><input type="text" name="post_category" id="post_category"><br>
+            <label for="post_author">作者id:</label><input type="number" name="post_author" id="post_author"><br>
+            <label for="post_status">状态:</label><input type="text" name="post_status" id="post_status"><br> -->
+            <!-- <label for="image">文件:</label><input type="file" name="image" id="image"><br> -->
             <button>提交</button>
         </form>
         <!-- <div class="button">

@@ -95,6 +95,14 @@ var getArticle = require('./Interface/article/get_articlemsg.js')
 //引入文章信息修改方法
 var postArticle = require('./Interface/article/post_articlemsg.js')
 
+/*--------------------------------------引入菜单方法--------------------------------------------*/
+
+//引入菜单信息方法
+var getMenu = require('./Interface/menu/get_menumsg.js')
+
+//引入菜单信息修改方法
+var postMenu = require('./Interface/menu/post_menumsg.js')
+
 /*--------------------------------------引入express框架--------------------------------------------*/
 
 var express = require('express')
@@ -326,6 +334,24 @@ app.post('/api/image/category/delete',middleWare.getDataNewVersion,postGallery.d
 
 /*--------------------------------------文章接口--------------------------------------------*/
 
+//获取文章总页数
+app.get('/api/post/count',getArticle.getArticleCount)
+
+//获取文章列表
+app.get('/api/post/list',getArticle.getArticleList)
+
+//获取文章详情
+app.get('/api/post/get',getArticle.getArticleMsg)
+
+//获取文章分类总页数
+app.get('/api/post/category/count',getArticle.getArticleTypeCount)
+
+//获取文章分类列表
+app.get('/api/post/category/list',getArticle.getArticleTypeList)
+
+//获取文章分类详情
+app.get('/api/post/category/get',getArticle.getArticleTypeMsg)
+
 //获取作者总页数
 app.get('/api/post/author/count',getAuthor.getAuthorCount)
 
@@ -335,6 +361,24 @@ app.get('/api/post/author/list',getAuthor.getAuthorList)
 //获取作者详情
 app.get('/api/post/author/get',getAuthor.getAuthorMsg)
 
+//添加文章
+app.post('/api/post/add',middleWare.getDataNewVersion,postArticle.addArticle)
+
+//修改文章信息
+app.post('/api/post/update',middleWare.getDataNewVersion,postArticle.updateArticle)
+
+//删除文章
+app.post('/api/post/delete',middleWare.getDataNewVersion,postArticle.deleteArticle)
+
+//添加文章分类
+app.post('/api/post/category/add',middleWare.getDataNewVersion,postArticle.addArticleType)
+
+//修改文章分类信息
+app.post('/api/post/category/update',middleWare.getDataNewVersion,postArticle.updateArticleType)
+
+//删除文章分类
+app.post('/api/post/category/delete',middleWare.getDataNewVersion,postArticle.deleteArticleType)
+
 //添加作者
 app.post('/api/post/author/add',middleWare.getDataNewVersion,postAuthor.addAuthor)
 
@@ -343,5 +387,16 @@ app.post('/api/post/author/update',middleWare.getDataNewVersion,postAuthor.updat
 
 //删除作者
 app.post('/api/post/author/delete',middleWare.getDataNewVersion,postAuthor.deleteAuthor)
+
+/*--------------------------------------菜单接口--------------------------------------------*/
+
+//获取菜单列表
+app.get('/api/menu/get',getMenu.getMenuList)
+
+//修改菜单列表
+app.get('/api/menu/update',postMenu.updateMenuList)
+
+//修改菜单列表
+app.get('/api/menu/update',)
 
 app.listen(8888)

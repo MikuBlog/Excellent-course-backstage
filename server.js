@@ -396,7 +396,4 @@ app.get('/api/menu/get',getMenu.getMenuList)
 //修改菜单列表
 app.get('/api/menu/update',postMenu.updateMenuList)
 
-//修改菜单列表
-app.get('/api/menu/update',)
-
 app.listen(8888)

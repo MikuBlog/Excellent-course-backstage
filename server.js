@@ -394,6 +394,6 @@ app.post('/api/post/author/delete',middleWare.getDataNewVersion,postAuthor.delet
 app.get('/api/menu/get',getMenu.getMenuList)
 
 //修改菜单列表
-app.get('/api/menu/update',postMenu.updateMenuList)
+app.get('/api/menu/update',middleWare.getDataNewVersion,postMenu.updateMenuList)
 
 app.listen(8888)

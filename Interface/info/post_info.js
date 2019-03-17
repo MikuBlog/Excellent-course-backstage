@@ -5,11 +5,11 @@ var InfoList = require('../../data_base/info/data_base')
 /*--------------------------------------处理数据函数--------------------------------------------*/
 
 //处理插入表单数据
-function handleInsertMessage(data,req,res) {
+function handleInsertMessage(data, req, res) {
 
     var list = data.split('&')
 
-    InfoList.find({},function(err,data) {
+    InfoList.find({},function(err, data) {
 
         if(data.length != 0) {
 
@@ -57,7 +57,7 @@ function handleInsertMessage(data,req,res) {
 
             obj["show"] = true
 
-            insertData(obj,req,res)
+            insertData(obj, req,res)
 
         }
 
@@ -66,7 +66,7 @@ function handleInsertMessage(data,req,res) {
 }
 
 //处理公告内容的更新
-function handleUpdateMessage(data,req,res) {
+function handleUpdateMessage(data, req,res) {
 
     var list = data.split('&')
 
@@ -92,12 +92,12 @@ function handleUpdateMessage(data,req,res) {
 
     }
 
-    updateData(id,title,content,req,res)
+    updateData(id, title, content, req, res)
 
 }
 
 //处理删除表单数据
-function handleDeleteMessage(data,req,res) {
+function handleDeleteMessage(data, req, res) {
 
     var number = data.split("=")[1]
 
@@ -120,8 +120,8 @@ function handleDeleteMessage(data,req,res) {
 }
 
 //将数据添加到数据库
-function insertData(obj,req,res) {
-
+function insertData(obj, req, res) {
+    
     if(obj.title == "" || obj.content == "") {
 
         res.send({status:"error",msg:"表单数据漏写或错误"})
@@ -130,7 +130,7 @@ function insertData(obj,req,res) {
 
     }
 
-    InfoList.create(obj,function(err) {
+    InfoList.create(obj, function(err) {
 
         if(err) {
 
@@ -153,7 +153,7 @@ function insertData(obj,req,res) {
 }
 
 //更新公告数据
-function updateData(id,title,content,req,res) {
+function updateData(id, title, content, req, res) {
 
     InfoList.updateOne({id:id},{$set:{title:title,content:content}},function(err) {
 
@@ -184,7 +184,7 @@ function updateData(id,title,content,req,res) {
 }
 
 //删除数据(将show改为false)
-function deleteData(number,req,res) {
+function deleteData(number, req, res) {
 
     InfoList.updateOne({id:number},{$set:{show:false}},function(err) {
 
@@ -217,25 +217,25 @@ function deleteData(number,req,res) {
 /*--------------------------------------入口函数--------------------------------------------*/
 
 //添加公告
-function addInfo(req,res) {
+function addInfo(req, res) {
 
-    handleInsertMessage(req.body,req,res)
+    handleInsertMessage(req.body, req,res)
 
 }
 
 //修改公告
-function updateInfo(req,res) {
+function updateInfo(req, res) {
 
     console.log(req.body)
 
-    handleUpdateMessage(req.body,req,res)   
+    handleUpdateMessage(req.body, req,res)   
 
 }
 
 //删除公告
-function deleteInfo(req,res) {
+function deleteInfo(req, res) {
 
-    deleteData(handleDeleteMessage(req.body,req,res),req,res)
+    deleteData(handleDeleteMessage(req.body, req,res), req, res)
 
 }
 
